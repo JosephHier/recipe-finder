@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipes using {{data.ingredient}}s{% endblock %}
+
+{% block body %}
+    {% if data.results_found %}
+        <nav class="navbar fixed-top navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Recipes for {{data.meal_type}}s that use {{data.ingredient}}s:</a>
+          </div>
+        </nav>
+    {% endif %}
+    <div class="container">
+        <div id="recipes-container">
+            {% if data.results_found %}
+                {% for vid in data.videos %}
+                    <div class="card vid-card">
+                      <h5 class="card-header">
+                        {{vid.title}}
+                      </h5>
+                      <div class="card-body">
+                        <p class="card-text">{{vid.meal_type}}</p>
+                        <p align="center">
+                        <iframe src="{{vid.yt_link}}"
+                        width="550"
+                        height="350"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </p>
+                      </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="card text-center" id="no-results-card">
+                  <div class="card-body">
+                    <h5 class="card-title">No Videos Found</h5>
+                    <p class="card-text">
+                        Unfortunately, we could not find any recipes for {{data.meal_type}}s
+                        that use {{data.ingredient}}s.
+                    </p>
+                  </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

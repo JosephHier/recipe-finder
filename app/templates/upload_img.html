@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipe Finder{% endblock %}
+{% block header %}
+<script src="{{ url_for('static', filename='js/uploadImg.js') }}">
+</script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div id="upload-container">
+            <h2>
+                Welcome to Recipe Finder!
+            </h2>
+            <br>
+            <div class="row">
+                <div class="col-8 padding-0">
+                    <form action="/upload"
+                    enctype="multipart/form-data"
+                    class="dropzone"
+                    id="filedrop">
+                        <div class="dz-message" data-dz-message>
+                            <span><h4>Drop an image of the ingredient you'd like to use here!</h4></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-4 padding-0" id="type-container">
+                    <div id="type-group">
+                        <h6>What types of food are you looking to make?</h6>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                            type="radio" name="mealType"
+                            value="all" id="type-all" checked="true">
+                            <label class="form-check-label" for="type-all">
+                            All
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                            type="radio" name="mealType"
+                            value="main" id="type-main">
+                            <label class="form-check-label" for="type-main">
+                            Main Dish
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                            type="radio" name="mealType"
+                            value="side" id="type-side">
+                            <label class="form-check-label" for="type-side">
+                            Side Dish
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                            type="radio" name="mealType"
+                            value="salad" id="type-salad">
+                            <label class="form-check-label" for="type-salad">
+                            Salad
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                            type="radio" name="mealType"
+                            value="soup" id="type-soup">
+                            <label class="form-check-label" for="type-soup">
+                            Soup
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                            type="radio" name="mealType"
+                            value="dessert" id="type-dessert">
+                            <label class="form-check-label" for="type-dessert">
+                            Dessert
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button id="submit-btn" class="btn btn-success" type="button">
+                Search for Recipes
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
